@@ -1,7 +1,7 @@
 .card {
-  max-width: 400px;
-  margin: get($spacings, 'large') auto;
+  max-width: 500px;
   padding: get($spacings, 'large');
+  text-align: center;
   background-color: $c-white;
   border: 1px solid $c-border;
   border-radius: get($radii);
@@ -11,8 +11,7 @@
     text-align: center;
   }
 
-  &__illustration {
-    display: block;
-    margin: get($spacings, 'large') auto 0;
+  &__action {
+    margin: get($spacings, xlarge) 0;
   }
 }

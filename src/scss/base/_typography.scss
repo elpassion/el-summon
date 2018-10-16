@@ -2,6 +2,10 @@
   font-family: 'Noticia Text', sans-serif;
 }
 
+%font-special {
+  font-family: Gilroy, sans-serif;
+}
+
 %font-text {
   @extend %font-default;
 
@@ -12,14 +16,14 @@
 }
 
 %font-heading {
-  @extend %font-default;
+  @extend %font-special;
   @extend %margin-clean;
 
   margin: 0 0 get($spacings, 'large');
   font-size: get($font-sizes, 'large');
   font-weight: get($font-weights, 'bold');
   line-height: 1.2;
-  color: $c-text-dark;
+  color: $c-heading;
 }
 
 body {

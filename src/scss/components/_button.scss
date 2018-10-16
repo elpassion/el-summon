@@ -1,0 +1,72 @@
+.button {
+  $_padding-vertical: 16px;
+  $_padding-horizontal: 40px;
+  $_round-size: 180px;
+  $_round-bevel-thickness: 16px;
+  $_shadow-size: $_round-size/10;
+
+  @extend %font-special;
+
+  display: inline-block;
+  padding: $_padding-vertical $_padding-horizontal;
+  letter-spacing: .15em;
+  color: $c-white;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $c-accent;
+  border-radius: get($radii);
+
+  &--round {
+    position: relative;
+    z-index: 1;
+    width: $_round-size;
+    height: $_round-size;
+    background-color: transparent;
+    border-radius: 50%;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      content: '';
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      z-index: -1;
+      width: $_round-size - 2 * $_round-bevel-thickness;
+      height: $_round-size - 2 * $_round-bevel-thickness;
+      margin-top: -2px;
+      background-color: $c-accent;
+      border: 0 solid rgba(255, 255, 255, .5);
+      border-top-width: 1px;
+      transition: width .2s, height .2s;
+    }
+
+    &::before {
+      z-index: -2;
+      width: $_round-size;
+      height: $_round-size;
+      background:
+        radial-gradient(
+          circle at top,
+          lighten($c-accent, 20%),
+          lighten($c-accent, 10%),
+          $c-accent,
+          darken($c-accent, 10%),
+          darken($c-accent, 20%)
+        );
+      border: 0 solid rgba(255, 255, 255, 1);
+      box-shadow: 0 ($_shadow-size / 2) $_shadow-size 0 rgba(0, 0, 0, .2);
+    }
+
+    &:active {
+      &::after {
+        width: $_round-size -  $_round-bevel-thickness;
+        height: $_round-size -  $_round-bevel-thickness;
+      }
+    }
+  }
+}

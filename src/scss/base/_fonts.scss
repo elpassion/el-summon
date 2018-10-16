@@ -1,6 +1,17 @@
 $font-path: '../assets/fonts';
 
 @font-face {
+  font-family: Gilroy;
+  font-weight: 600;
+  src: url('#{$font-path}/32F572_1_0.eot');
+  src:
+    url('#{$font-path}/32F572_1_0.eot?#iefix') format('embedded-opentype'),
+    url('#{$font-path}/32F572_1_0.woff2') format('woff2'),
+    url('#{$font-path}/32F572_1_0.woff') format('woff'),
+    url('#{$font-path}/32F572_1_0.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Noticia Text';
   font-style: normal;
   font-weight: 400;
@@ -10,16 +21,4 @@ $font-path: '../assets/fonts';
     url('#{$font-path}/noticiatext-regular-webfont.woff2') format('woff2'),
     url('#{$font-path}/noticiatext-regular-webfont.woff') format('woff'),
     url('#{$font-path}/noticiatext-regular-webfont.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Noticia Text';
-  font-style: normal;
-  font-weight: 600;
-  src: url('#{$font-path}/noticiatext-bold-webfont.eot');
-  src:
-    url('#{$font-path}/noticiatext-bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('#{$font-path}/noticiatext-bold-webfont.woff2') format('woff2'),
-    url('#{$font-path}/noticiatext-bold-webfont.woff') format('woff'),
-    url('#{$font-path}/noticiatext-bold-webfont.ttf') format('truetype');
 }
