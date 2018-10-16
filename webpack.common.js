@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/js/index.js',
+  entry: './src/client/js/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -14,7 +14,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src/js'),
+        include: path.resolve(__dirname, 'src/client/js'),
         loader: 'babel-loader',
       },
       {
@@ -24,7 +24,7 @@ module.exports = {
       {
         test: /\.(png|jpe?g|svg)$/,
         loader: 'file-loader',
-        include: path.resolve(__dirname, 'src/assets/img'),
+        include: path.resolve(__dirname, 'src/client/assets/img'),
         options: {
           name: '[hash].[ext]',
           outputPath: 'img/',
@@ -38,7 +38,7 @@ module.exports = {
       {
         test: /\.(woff2?|ttf|otf|eot|svg)$/,
         loader: 'file-loader',
-        include: path.resolve(__dirname, 'src/assets/fonts'),
+        include: path.resolve(__dirname, 'src/client/assets/fonts'),
         options: {
           name: '[hash].[ext]',
           outputPath: 'fonts/',
@@ -55,7 +55,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/html/index.html',
+      template: './src/client/html/index.html',
       filename: 'index.html',
     }),
   ],
