@@ -5,6 +5,7 @@ const socketIO = require('socket.io');
 const { WebClient } = require('@slack/client');
 const moment = require('moment');
 
+const PORT = process.env.PORT;
 const CHANNEL_ID = process.env.SLACK_CHANNEL_ID;
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
@@ -12,8 +13,8 @@ const slackClient = new WebClient(SLACK_TOKEN);
 const app = http.createServer();
 const io = socketIO(app);
 
-app.listen(8000, () => {
-  console.log('listening on post 8000');
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
 
 io.on('connection', socket => {

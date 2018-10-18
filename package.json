@@ -19,7 +19,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "runserver": "nodemon src/server/server.js"
+    "runserver": "node src/server/server.js",
+    "devserver": "nodemon src/server/server.js"
   },
   "browserslist": [
     "> 1%",
