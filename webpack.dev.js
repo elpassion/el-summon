@@ -4,7 +4,7 @@ const common = require('./webpack.common.js');
 const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-module.exports = merge(common, {
+module.exports = merge(common(), {
   mode: 'development',
   devServer: {
     contentBase: '/dist/',

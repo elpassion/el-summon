@@ -1,8 +1,9 @@
 import '../scss/main.scss';
 import io from 'socket.io-client';
 
-const SERVER_ADDRESS = 'http://localhost:8000';
-const socket = io(SERVER_ADDRESS);
+const SERVER_ADDRESS = process.env.SERVER_ADDRESS;
+const PORT = process.env.PORT;
+const socket = io(`${SERVER_ADDRESS}:${PORT}`);
 
 socket.on('connect', function () {
   console.log('connected to server');

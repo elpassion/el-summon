@@ -18,7 +18,9 @@ app.listen(PORT, () => {
 });
 
 io.on('connection', socket => {
+  console.log('connection')
   const onSummon = () => {
+    console.log('summon')
     slackClient.chat.postMessage({
       channel: CHANNEL_ID,
       text: `It's ${moment(Date.now()).format('HH:mm:ss')} and someone's at the door!`
