@@ -12,10 +12,36 @@
     <section class="card">
       <h1 class="card__title">Dear Guest!</h1>
 
-      <p>Rather than keep you waiting by the door,<br/>we'd like to welcome you properly!</p>
+      <p>Rather than keep you waiting by the door,<br />we'd like to welcome you properly!</p>
       <p>Please let us know you're here:</p>
 
-      <button type="button" id="summonButton" class="card__action button button--round">summon someone</button>
+      <div class="card__actions">
+        <div class="card__action card__action--buttonSummon card__action--visible">
+          <button type="button" id="js_summonButton" class="button button--round">summon someone</button>
+        </div>
+
+        <div class="card__action card__action--infoSummon">
+          <p>
+            Notification of your presence was sent to&nbsp;our&nbsp;Slack.
+          </p>
+        </div>
+
+        <div class="card__action card__action--infoOmw">
+          <p>
+            Just a sec, someone is on&nbsp;their&nbsp;way!
+          </p>
+        </div>
+
+        <div class="card__action card__action--infoRejection">
+          <p>
+            No one cares.<br />#foreveralone
+          </p>
+        </div>
+
+        <div class="card__action card__action--buttonRetry">
+          <button type="button" id="js_retryButton">I want to try again!</button>
+        </div>
+      </div>
     </section>
   </main>
 

@@ -20,14 +20,15 @@ const app = http.createServer(
         if (err) {
           return console.error(err);
         }
-
         const { original_message: originalMessage, user, actions } = JSON.parse(body.payload);
+        const performedAction = actions[0];
+        const isComing = performedAction.value === 'accepted';
 
-        io.to(actions[0].name).emit('message', 'slack response');
+        io.to(performedAction.name).emit(isComing ? 'confirmation' : 'rejection');
 
         const response = {
           ...originalMessage,
-          attachments: [{ 'text': `${user.name} is on their way (at ${ nowForHumans() })` }],
+          attachments: [{ 'text': `${user.name} ${isComing ? 'is on their way' : 'does not care'} (at ${ nowForHumans() })` }],
         };
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -43,7 +44,7 @@ app.listen(PORT, () => {
 });
 
 io.on('connection', socket => {
-  const {id} = socket;
+  const { id } = socket;
   console.log(`incoming connection from ${id}`);
 
   const onSummon = () => {
@@ -63,6 +64,12 @@ io.on('connection', socket => {
               'text': 'I\'m coming!',
               'type': 'button',
               'value': 'accepted'
+            },
+            {
+              'name': socket.id,
+              'text': 'Whatever, I don\'t care',
+              'type': 'button',
+              'value': 'rejected'
             }
           ]
         }
@@ -70,10 +77,10 @@ io.on('connection', socket => {
     })
       .then(() => {
         console.log(`message sent to ${CHANNEL_ID}`);
-        socket.emit('message', 'Message sent to the channel!');
+        socket.emit('messageSent', 'Message sent to the channel!');
       })
       .catch(console.error);
   };
 
-  socket.on('summonClick', onSummon);
+  socket.on('summon', onSummon);
 });

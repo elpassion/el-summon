@@ -1,6 +1,8 @@
 .card {
+  $_side-padding: get($spacings, 'xlarge');
+
   max-width: 500px;
-  padding: get($spacings, 'large');
+  padding: $_side-padding;
   text-align: center;
   background-color: $c-white;
   border: 1px solid $c-border;
@@ -11,7 +13,60 @@
     text-align: center;
   }
 
+  &__actions {
+    position: relative;
+    height: 20em;
+    margin: 0 (-$_side-padding) 0;
+    overflow: hidden;
+  }
+
   &__action {
-    margin: get($spacings, xlarge) 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 $_side-padding;
+    font-size: 1.35em;
+    transform: translate(-100%, 0);
+    transition: transform .2s ease-in-out;
+
+    &--infoSummon {
+      top: auto;
+      bottom: 60%;
+      margin-bottom: get($spacings);
+    }
+
+    &--infoOmw,
+    &--buttonRetry button {
+      color: #28c23e;
+    }
+
+    &--buttonRetry {
+      top: auto;
+      bottom: 0;
+    }
+
+    &--visible {
+      transform: translate(0, 0);
+    }
+
+    &--infoOmw,
+    &--infoRejection {
+      top: 40%;
+      margin-top: get($spacings);
+    }
+
+    &--infoRejection {
+      color: $c-error;
+    }
+
+    &--buttonSummon {
+      top: 50%;
+      transform: translate(100%, -50%);
+
+      &.card__action--visible {
+        transform: translate(0, -50%);
+      }
+    }
   }
 }
