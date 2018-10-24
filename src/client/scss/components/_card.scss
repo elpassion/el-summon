@@ -2,6 +2,10 @@
   $_side-padding: get($spacings, 'large');
   $_side-padding-lg: get($spacings, 'xlarge');
 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
   text-align: center;
 
   &__title {
@@ -10,7 +14,7 @@
 
   &__actions {
     position: relative;
-    height: 20em;
+    flex-grow: 1;
     margin: 0 (-$_side-padding) 0;
     overflow: hidden;
   }
@@ -38,7 +42,7 @@
 
     &--buttonRetry {
       top: auto;
-      bottom: 0;
+      bottom: 10%;
     }
 
     &--visible {
@@ -66,6 +70,7 @@
   }
 
   @media screen and (min-width: 500px) {
+    flex-grow: 0;
     max-width: 500px;
     padding: $_side-padding-lg;
     border: 1px solid $c-border;
@@ -73,6 +78,7 @@
     box-shadow: get($shadows);
 
     &__actions {
+      min-height: 20em;
       margin: 0 (-$_side-padding-lg) 0;
     }
 
