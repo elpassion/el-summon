@@ -19,11 +19,15 @@
   @extend %font-special;
   @extend %margin-clean;
 
-  margin: 0 0 get($spacings, 'large');
+  margin: 0 0 get($spacings);
   font-size: get($font-sizes, 'large');
   font-weight: get($font-weights, 'bold');
   line-height: 1.2;
   color: $c-heading;
+
+  @media screen and (min-width: 500px) {
+    margin-bottom: get($spacings, 'large');
+  }
 }
 
 body {
@@ -41,9 +45,18 @@ h6,
 }
 
 p {
-  @extend %margin-clean;
+  margin-top: 0;
+  margin-bottom: 0;
 
   & + & {
-    margin-bottom: get($spacings);
+    margin-top: get($spacings);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  p {
+    & + & {
+      margin-top: get($spacings, large);
+    }
   }
 }
