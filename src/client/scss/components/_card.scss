@@ -1,13 +1,8 @@
 .card {
-  $_side-padding: get($spacings, 'xlarge');
+  $_side-padding: get($spacings, 'large');
+  $_side-padding-lg: get($spacings, 'xlarge');
 
-  max-width: 500px;
-  padding: $_side-padding;
   text-align: center;
-  background-color: $c-white;
-  border: 1px solid $c-border;
-  border-radius: get($radii);
-  box-shadow: get($shadows);
 
   &__title {
     text-align: center;
@@ -67,6 +62,22 @@
       &.card__action--visible {
         transform: translate(0, -50%);
       }
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    max-width: 500px;
+    padding: $_side-padding-lg;
+    border: 1px solid $c-border;
+    border-radius: get($radii);
+    box-shadow: get($shadows);
+
+    &__actions {
+      margin: 0 (-$_side-padding-lg) 0;
+    }
+
+    &__action {
+      padding: 0 $_side-padding-lg;
     }
   }
 }
